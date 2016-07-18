@@ -1,0 +1,26 @@
+{% extends 'posts/post_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_extra %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-sm-6 ">
+    <h1>{{ template_title }}</h1>
+        <form method="post" action="" enctype="multipart/form-data">{%  csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-primary" value="{{ btn_name }}">
+            <a href="../" class="btn btn-primary" role="button">cancelar</a></p>
+        </form>
+    </div>
+
+     <div class="col-sm-6" >
+        <h1>Vista previa</h1>
+        <div class="content-preview">
+            <h3 id="preview-title"></h3>
+            <p id="preview-content"></p>
+        </div>
+    </div>
+{% endblock %}

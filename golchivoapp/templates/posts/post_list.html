@@ -1,0 +1,56 @@
+{% extends 'posts/post_base.html' %}
+
+{% block post_detail_link %}
+    <li class="pull-right"><a href="{% url 'posts:create' %}">Crear Noticia</a></li>
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-sm-6 col-sm-offset-3 ">
+{#        <h1>{{ template_title }}</h1>#}
+        {% for item in post %}
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="thumbnail">
+                        {% if item.image %}
+                            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" class="img-responsive"/></a>
+                        {% endif %}
+                        <div class="caption post-detail-item">
+                            <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a> <small>{{ item.timestamp|timesince }}</small> </h3>
+                            {% if item.user.get_full_name %}
+{#                                <p>Author: {{ item.user.get_full_name }}</p>#}
+                            {% endif %}
+                            {{ item.get_markdown|truncatechars_html:100 }}
+{#                            <p><a href="{{ item.get_absolute_url }}" class="btn btn-primary" role="button">Continuar leyendo</a></p>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="pagination">
+        <span class="step-links">
+            {% if post.has_previous %}
+                <a href="?page={{ post.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ post.number }} of {{ post.paginator.num_pages }}.
+            </span>
+
+            {% if post.has_next %}
+                <a href="?page={{ post.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+</div>
+
+
+    </div>
+
+{% endblock %}
+
+{# {% url 'posts:detail' id=item.id %}  en vez de get_absolute_url #}
+
+
+

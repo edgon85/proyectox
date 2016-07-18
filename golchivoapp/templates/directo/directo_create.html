@@ -1,0 +1,16 @@
+<h1>{{template_title}}</h1>
+
+<form method="post" action="">
+{% csrf_token %}
+	<table border="1">
+    <tr>
+      <td>Minuto</td>
+      <td>Comentario</td>
+    </tr>   
+    <tr>
+      <td>{{form.minuto}}</td>
+      <td>{{form.comentario}}</td>
+    </tr>
+</table>
+	<button type="submit">{{btn_name}}</button>
+</form>

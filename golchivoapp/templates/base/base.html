@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> {% block head_title %}Gol Chivo{% endblock head_title %} </title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	
+</head>
+<body>
+
+<!-- Navbar -->
+{% if user.is_authenticated %}
+  {% include "base/navbar.html" %}
+{% endif %}
+<!-- fin Navbar -->
+
+
+{% block content %}
+	
+{% endblock content %}
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+</body>
+</html>

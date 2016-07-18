@@ -1,0 +1,20 @@
+<h1>{{template_title}}</h1>
+
+<table border="1">
+    <tr>
+      <td>id</td>
+      <td>Nombre </td>
+      <td>Resultado</td>
+      <td>Nombre </td>
+      <td>Resultado</td>
+    </tr>
+{% for item in object_list %}    
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.equipo_uno}}</td>
+      <td>{{item.resultado_uno}}</td>
+      <td>{{item.equipo_dos}}</td>
+      <td>{{item.resultado_dos}}</td>
+    </tr>
+{% endfor%}
+</table>

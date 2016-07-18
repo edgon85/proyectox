@@ -1,0 +1,14 @@
+<h1>{{template_title}}</h1>
+
+<table border="1">
+    <tr>
+      <td>Minuto</td>
+      <td>Comentario</td>
+    </tr>
+{% for item in object_list %}    
+    <tr>
+      <td>{{item.minuto}}</td>
+      <td>{{item.comentario}}</td>
+    </tr>
+{% endfor%}
+</table>

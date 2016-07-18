@@ -1,0 +1,21 @@
+<h1>{{template_title}}</h1>
+
+<table border="1">
+    <tr>
+      <td>id</td>
+      <td>Nombre jugador local</td>
+      <td>No.</td>
+      <td>Nombre jugador visita</td>
+      <td>No.</td>
+    </tr>
+{% for item in object_list_alin %}    
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.nombre_jugador_local}}</td>
+      <td>{{item.numero_jugador_local}}</td>
+      <td>{{item.nombre_jugador_visita}}</td>
+      <td>{{item.numero_jugador_visita}}</td>
+      <td>{{item.jornada.titulo}}</td>
+    </tr>
+{% endfor%}
+</table>

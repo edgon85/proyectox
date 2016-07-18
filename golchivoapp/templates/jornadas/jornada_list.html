@@ -1,0 +1,129 @@
+{% extends "base/base.html" %}
+{% block head_title %} Jornadas | {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 text-center">
+			{% if object_list %}
+			{% for item in object_list %}
+						<h2>{{item.titulo}}</h2>
+				<div class="panel panel-default text-left">
+					<div class="panel-body">							
+						<FONT SIZE=4>Fecha:</font> {{item.fecha}}<br>
+						<FONT SIZE=4>Horario:</font> {{item.horario}}<br>
+						<FONT SIZE=4>Estadio:</font> {{item.estadio}}<br>
+						<FONT SIZE=4>Local:</font> {{item.nom_local}}<br>
+						<FONT SIZE=4>Visita:</font> {{item.nom_visita}}<br>
+						<FONT SIZE=4>Marcador:</font> {{item.marcador}}<br>
+						<FONT SIZE=4>Estado:</font> {{item.estado}}<br>
+						<hr/>
+						<a class="btn btn-primary" href="{% url 'jornada_anterior:jornada_update' item.id %}">Editar</a>
+					</div>
+				</div>
+			{% endfor%}	
+			{% endif%}
+			</div>
+		<!-- 	<div class=" col-sm-12 col-md-2">
+			
+			</div> -->
+			<div class="col-md-8 text-center">
+				<h2>Alineacion</h2>
+				<div class="panel panel-default text-left">
+					<div class="panel-body">
+					
+						<table class="table text-left">
+						<thead>
+							<tr>
+								<td>Nombre Jugador Local</td>
+								<td>No.</td>
+								<td>Nombre jugador visita</td>
+								<td>No.</td>
+							</tr>
+						</thead>
+							{% if object_list %}
+							{% for item in object_list %}
+							<tbody>   
+							<tr>
+								<td>{{item.alineacion.nombre_jugador_local}}</td>
+								<td>{{item.alineacion.numero_jugador_local}}</td>
+								<td>{{item.alineacion.nombre_jugador_visita}}</td>
+								<td>{{item.alineacion.numero_jugador_visita}}</td>
+							</tr>
+							</tbody>
+							{% endfor%}
+							{% endif %}
+						</table>	
+
+						{{item.alineacion.nombre_jugador_local}}
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
+
+<!-- <table class="table text-left">
+							<tbody>
+								<tr>
+									<td><h4><strong>Fecha</strong></h4></td>
+									<td>{{item.fecha}}</td>
+								</tr>
+								<tr>
+									<td>Horario</td>
+									<td>{{item.horario}}</td>
+								</tr>
+								<tr>
+									<td>Estadio</td>
+									<td>{{item.estadio}}</td>
+								</tr>
+								<tr>
+									<td>Equipo local</td>
+									<td>{{item.nom_local}}</td>
+								</tr>
+								<tr>
+									<td>Equipo visita</td>
+									<td>{{item.nom_visita}}</td>
+								</tr>
+								<tr>
+									<td>Marcador</td>
+									<td>{{item.marcador}}</td>
+								</tr>
+								<tr>
+									<td>Estado</td>
+									<td>{{item.estado}}</td>
+								</tr>
+								<a class="btn btn-primary" href="#">Editar</a>
+							</tbody>
+						</table> -->
+
+
+						<table class="table text-left">
+						<thead>
+							<tr>
+								<td>id</td>
+								<td>Nombre Jugador Local</td>
+								<td>No.</td>
+								<td>Nombre jugador visita</td>
+								<td>No.</td>
+							</tr>
+						</thead>
+							{% for alin in object_list_alin %} 
+							<tbody>   
+							<tr>
+
+								<td>{{alin.id}}</td>
+								{% if alin.nombre_jugador_local %}
+								<td>{{alin.nombre_jugador_local}}</td>
+								{% endif %}
+								<td>{{alin.numero_jugador_local}}</td>
+								<td>{{alin.nombre_jugador_visita}}</td>
+								<td>{{alin.numero_jugador_visita}}</td>
+							</tr>
+							</tbody>
+							{% endfor%}
+						</table>	

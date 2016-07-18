@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% block head_title %} home | {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+	<div class="container-fluid">
+    
+		<div class="row">
+		
+			<div class="col-md-4 text-center">
+				<a href="{% url 'jornada_anterior:list' %}" class="list-group-item"><h4>Jornada 1</h4></a>
+			</div>
+			<div class=" col-md-4 text-center">
+				<a href="#" class="list-group-item"><h4>Jornada 2</h4></a>
+			</div>
+			<div class="col-md-4 text-center">
+				<a href="#" class="list-group-item"><h4>Jornada 3</h4></a>
+			</div>
+			
+		</div>
+	</div>
+{% endblock content %}
