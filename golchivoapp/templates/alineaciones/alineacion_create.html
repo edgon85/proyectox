@@ -1,22 +1,93 @@
-<h1>{{template_title}}</h1>
+{% include 'base/base.html' %}
+{% load crispy_forms_tags %}
 
-<form method="post" action="">
-{% csrf_token %}
-	<table border="1">
-    <tr>
-      <td>Jugador local</td>
-      <td>No.</td>
-      <td>Jugador vista</td>
-      <td>No.</td>
-    </tr>   
-    <tr>
-      <td>{{form.nombre_jugador_local}}</td>
-      <td>{{form.numero_jugador_local}}</td>
-      <td>{{form.nombre_jugador_visita}}</td>
-      <td>{{form.numero_jugador_visita}}</td>
-    </tr>
+<div class="col-sm-6 col-sm-offset-3">
+    <h1>{{template_title}}</h1>
+    <form method="post" action="">
+    {% csrf_token %}
+        <table class="table">
+        <tr>
+          <td>Jugador local</td>
+          <td>No.</td>
+          <td>Jugador vista</td>
+          <td>No.</td>
+        </tr>
+        <tr>
+          <td>{{form.nombreJL1}}</td>
+          <td>{{form.numeroJL1}}</td>
+          <td>{{form.nombreJV1}}</td>
+          <td>{{form.numeroJV1}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL2}}</td>
+          <td>{{form.numeroJL2}}</td>
+          <td>{{form.nombreJV2}}</td>
+          <td>{{form.numeroJV2}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL3}}</td>
+          <td>{{form.numeroJL3}}</td>
+          <td>{{form.nombreJV3}}</td>
+          <td>{{form.numeroJV3}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL4}}</td>
+          <td>{{form.numeroJL4}}</td>
+          <td>{{form.nombreJV4}}</td>
+          <td>{{form.numeroJV4}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL5}}</td>
+          <td>{{form.numeroJL5}}</td>
+          <td>{{form.nombreJV5}}</td>
+          <td>{{form.numeroJV5}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL6}}</td>
+          <td>{{form.numeroJL6}}</td>
+          <td>{{form.nombreJV6}}</td>
+          <td>{{form.numeroJV6}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL7}}</td>
+          <td>{{form.numeroJL7}}</td>
+          <td>{{form.nombreJV7}}</td>
+          <td>{{form.numeroJV7}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL8}}</td>
+          <td>{{form.numeroJL8}}</td>
+          <td>{{form.nombreJV8}}</td>
+          <td>{{form.numeroJV8}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL9}}</td>
+          <td>{{form.numeroJL9}}</td>
+          <td>{{form.nombreJV9}}</td>
+          <td>{{form.numeroJV9}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL10}}</td>
+          <td>{{form.numeroJL10}}</td>
+          <td>{{form.nombreJV10}}</td>
+          <td>{{form.numeroJV10}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreJL11}}</td>
+          <td>{{form.numeroJL11}}</td>
+          <td>{{form.nombreJV11}}</td>
+          <td>{{form.numeroJV11}}</td>
+        </tr>
+            <tr>
+          <td>{{form.nombreDtL}}</td>
+          <td>{{form.numeroDtL}}</td>
+          <td>{{form.nombreDtV}}</td>
+          <td>{{form.numeroDtL}}</td>
+        </tr>
 
-</table>
-	
-	<button type="submit">{{btn_name}}</button>
-</form>
+
+    </table>
+        <button class="btn btn-primary" type="submit">{{btn_name}}</button>
+    </form>
+
+</div>

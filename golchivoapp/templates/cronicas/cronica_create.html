@@ -1,8 +1,14 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags%}
 
-<h1>{{template_title}}</h1>
+{% block content %}
+    <div class="col-sm-6 col-sm-offset-3">
 
-<form method="post" action="">
-{% csrf_token %}
-	{{form.as_p}}
-	<button type="submit">{{btn_name}}</button>
-</form>
+        <form method="post" action="" >
+            {% csrf_token %}
+            {{form|crispy}}
+            <button class="btn btn-primary" type="submit">{{btn_name}}</button>
+            <a class="btn btn-primary" href="{% url 'jornada_actual:cronica_list' %}">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

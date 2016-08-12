@@ -1,0 +1,37 @@
+{% include 'base/base.html' %}
+
+{% block content %}
+
+    <div class="col-md-2 ">
+    </div>
+<div class="col-md-6 ">
+<h3>{{ template_title }}</h3>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <table class="table text-left">
+                <tr>
+                    <td class="text-center">Nombre</td>
+                    <td class="text-center">Amarillas</td>
+                    <td class="text-center">Rojas</td>
+                    <td class="text-center">partidos suspendidos</td>
+                    <td class="text-center">accion</td>
+                </tr>
+            {% for item in object_list %}
+                <tr >
+                    <td>{{item.jugador}}</td>
+                    <td class="text-center">{{item.amarillas}}</td>
+                    <td class="text-center">{{item.rojas}}</td>
+                    <td class="text-center">{{item.suspendido}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-primary btn-sm" href="{% url 'tablas:tarj_update' item.id %}">Editar</a>
+                    </td>
+                </tr>
+
+            {% endfor%}
+            </table>
+        <a class="btn btn-primary" href="{% url 'tablas:tarj_create' %}">Crear</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

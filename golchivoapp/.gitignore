@@ -1,5 +1,8 @@
 *.pyc
 __pycache__
 myvenv
+media_cdn
+static_cdn
+migrations
 db.sqlite3
 .DS_Store

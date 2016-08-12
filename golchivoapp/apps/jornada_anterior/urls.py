@@ -12,7 +12,8 @@ router.register(r'resultadoApi', views.ResultadoViewSet)
 
 urlpatterns = [
 	#Jornadas
-    
+   # url(r'^$',views.IndexView.as_view(),name="list"),
+
     url(r'^$', login_required(views.jornada_list), name="list"),
     url(r'^create/$', login_required(views.jornada_create), name="jornada_create"),
     url(r'^(?P<id>\d+)/$',login_required(views.jornada_detail), name='jornada_detail'),

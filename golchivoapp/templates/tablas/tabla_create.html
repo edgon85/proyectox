@@ -1,0 +1,29 @@
+{% include 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+<div class="col-sm-6 ">
+    <h1>{{template_title}}</h1>
+    <form method="post" action="">
+    {% csrf_token %}
+        <table class="table">
+            <tr>
+                <td>Posicion</td>
+                <td>Equipo</td>
+                <td>Jugados</td>
+                <td>Goles</td>
+                <td>Dif</td>
+                <td>Pts</td>
+            </tr>
+                <tr>
+                    <td>{{form.posicion}}</td>
+                    <td>{{form.equipo}}</td>
+                    <td>{{form.partidos}}</td>
+                    <td>{{form.goles}}</td>
+                    <td>{{form.diferencia}}</td>
+                    <td>{{form.puntos}}</td>
+                </tr>
+        </table>
+        <button class="btn btn-primary" type="submit">{{btn_name}}</button>
+    </form>
+
+</div>

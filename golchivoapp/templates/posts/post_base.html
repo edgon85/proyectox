@@ -33,7 +33,7 @@
         <ol class="breadcrumb">
                 <li><a href="{% url 'home' %}">Inicio</a></li>
                 <li><a href="{% url 'posts:list' %}">Listado</a></li>
-                <li class="pull-right"><a href="#">Cerrar Sesion</a></li>
+                <li class="pull-right"><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
                 {% block post_detail_link %}
                 
                 {% endblock %}

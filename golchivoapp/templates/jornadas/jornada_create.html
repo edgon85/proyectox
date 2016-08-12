@@ -1,8 +1,19 @@
+{% extends 'base/base.html' %}
 
-<h1>{{template_title}}</h1>
+{% load crispy_forms_tags%}
 
-<form method="post" action="">
-{% csrf_token %}
-	{{form.as_p}}
-	<button type="submit">{{btn_name}}</button>
-</form>
+
+{% block content %}
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1>{{template_title}}</h1>
+
+        <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{form|crispy}}
+            {{ formjact|crispy }}
+            {{ fromjsig|crispy }}
+            <button class="btn btn-primary" type="submit">{{btn_name}}</button>
+        </form>
+    </div>
+{% endblock %}

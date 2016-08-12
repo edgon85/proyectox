@@ -7,6 +7,8 @@ from .serializers import JornadaSerializer, AlineacionSerializer, DirectoSeriali
 
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from django.views.generic import ListView
+
 # Create your views here.
 
 def home(request):
@@ -21,7 +23,28 @@ def jornada_list(request): #lista de jornadas
 	}
 	return render(request,'jornadas/jornada_list.html', context)
 
+
+
+
+# class IndexView(ListView):
+# 	context_object_name = 'home_list'
+# 	template_name = 'jornadas/jornada_list.html'
+# 	queryset = Jornada.objects.all()
+#
+# 	def get_context_data(self, **kwargs):
+# 		context = super(IndexView, self).get_context_data(**kwargs)
+# 		context['alineacion'] = Alineacion.objects.all()
+# 		#context['venue_list'] = Venue.objects.all()
+# 		#context['festival_list'] = Festival.objects.all()
+# 		# And so on for more models
+# 		return context
+
+
+
+
 #-------------------JORNADA CREATE------------------------------------------------------------------
+
+
 def jornada_create(request):
 	form = JorndaForm(request.POST or None)
 	if form.is_valid():
@@ -29,7 +52,7 @@ def jornada_create(request):
 		instance.save()
 		# messages.success(request, "Creado satisfactoriamente")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:list")
+		return redirect("jornada_anterior:list")
 
 	context = {
 		"template_title":'Nueva Jornada',
@@ -53,13 +76,13 @@ def jornada_detail(request, id=None): #retrive
 # #-------------------JORNADA UPDATE------------------------------------------------------------------
 def jornada_update(request, id=None):
 	instance = get_object_or_404(Jornada, id=id)
-	form = JorndaForm(request.POST or None, instance=instance)
+	form = JorndaForm(request.POST or None, request.FILES or None, instance=instance)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
 		# messages.success(request, "Jornada guardada")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:list")
+		return redirect("jornada_anterior:list")
 
 	context = {
 		"template_title":'Actualizar ' + instance.titulo,
@@ -77,7 +100,7 @@ def jornada_delete(request, id= None):
 	instance.delete()
 	# messages.success(request, "Jornada Eliminada")
 
-	return redirect("jornada_uno:list")
+	return redirect("jornada_anterior:list")
 
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -88,7 +111,7 @@ def alineacion_list(request): #lista de alineaciones
 	queryset = Alineacion.objects.all()
 	context = {
 		'template_title': 'Lista de alineaciones',
-		'object_list_alin':queryset,
+		'object_list':queryset,
 	}
 	return render(request,'alineaciones/alineacion_list.html', context)
 
@@ -100,7 +123,7 @@ def alinecion_create(request):
 		instance.save()
 		# messages.success(request, "Creado satisfactoriamente")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:alin_list")
+		return redirect("jornada_anterior:alin_list")
 
 	context = {
 		"template_title":'Agregar Jugadores',
@@ -129,7 +152,7 @@ def alineacion_update(request, id=None):
 		instance.save()
 		# messages.success(request, "Jornada guardada")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:alin_list")
+		return redirect("jornada_anterior:alin_list")
 
 	context = {
 		"template_title":'Actualizar ' + instance.titulo,
@@ -147,7 +170,7 @@ def alineacion_delete(request, id= None):
 	instance.delete()
 	# messages.success(request, "Jornada Eliminada")
 
-	return redirect("jornada_uno:alin_list")
+	return redirect("jornada_anterior:alin_list")
 
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -170,7 +193,7 @@ def directo_create(request):
 		instance.save()
 		# messages.success(request, "Creado satisfactoriamente")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:direct_list")
+		return redirect("jornada_anterior:direct_list")
 
 	context = {
 		"template_title":'Agregar Comentario',
@@ -199,7 +222,7 @@ def directo_update(request, id=None):
 		instance.save()
 		# messages.success(request, "Jornada guardada")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:direct_list")
+		return redirect("jornada_anterior:direct_list")
 
 	context = {
 		"template_title":'Actualizar minuto ' + instance.minuto,
@@ -217,7 +240,7 @@ def directo_delete(request, id= None):
 	instance.delete()
 	# messages.success(request, "Jornada Eliminada")
 
-	return redirect("jornada_uno:direct_list")
+	return redirect("jornada_anterior:direct_list")
 
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -241,7 +264,7 @@ def cronica_create(request):
 		instance.save()
 		# messages.success(request, "Creado satisfactoriamente")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:cronica_list")
+		return redirect("jornada_anterior:cronica_list")
 
 	context = {
 		"template_title":'Agregar cronica',
@@ -270,7 +293,7 @@ def cronica_update(request, id=None):
 		instance.save()
 		# messages.success(request, "Jornada guardada")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:cronica_list")
+		return redirect("jornada_anterior:cronica_list")
 
 	context = {
 		"template_title":'Actualizar ' + instance.titulo,
@@ -288,7 +311,7 @@ def cronica_delete(request, id= None):
 	instance.delete()
 	# messages.success(request, "Jornada Eliminada")
 
-	return redirect("jornada_uno:cronica_list")
+	return redirect("jornada_anterior:cronica_list")
 
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -306,13 +329,13 @@ def resultado_list(request): #lista de alineaciones
 
 #-------------------RESULTADOS CREATE------------------------------------------------------------------
 def resultado_create(request):
-	form = ResultadoForm(request.POST or None)
+	form = ResultadoForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
 		# messages.success(request, "Creado satisfactoriamente")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:result_list")
+		return redirect("jornada_anterior:result_list")
 
 	context = {
 		"template_title":'Agregar resultados',
@@ -341,7 +364,7 @@ def resultado_update(request, id=None):
 		instance.save()
 		# messages.success(request, "Jornada guardada")
 		# return HttpResponseRedirect(instance.get_absolute_url())
-		return redirect("jornada_uno:result_list")
+		return redirect("jornada_anterior:result_list")
 
 	context = {
 		"template_title":'Actualizar ' + instance.titulo,
@@ -353,13 +376,13 @@ def resultado_update(request, id=None):
 
 
 
-# #-------------------RESULTADOS DELETE------------------------------------------------------------------
+#-------------------RESULTADOS DELETE------------------------------------------------------------------
 def resultado_delete(request, id= None):
 	instance = get_object_or_404(Resultado, id=id)
 	instance.delete()
 	# messages.success(request, "Jornada Eliminada")
 
-	return redirect("jornada_uno:result_list")
+	return redirect("jornada_anterior:result_list")
 
 # ------------------------------------------------------------------------------------------------------------------------------------------
 

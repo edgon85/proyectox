@@ -1,21 +1,112 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
 <h1>{{template_title}}</h1>
 
-<table border="1">
-    <tr>
-      <td>id</td>
-      <td>Nombre jugador local</td>
-      <td>No.</td>
-      <td>Nombre jugador visita</td>
-      <td>No.</td>
-    </tr>
-{% for item in object_list_alin %}    
-    <tr>
-      <td>{{item.id}}</td>
-      <td>{{item.nombre_jugador_local}}</td>
-      <td>{{item.numero_jugador_local}}</td>
-      <td>{{item.nombre_jugador_visita}}</td>
-      <td>{{item.numero_jugador_visita}}</td>
-      <td>{{item.jornada.titulo}}</td>
-    </tr>
-{% endfor%}
-</table>
+<div class="col-md-6 ">
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <table class="table text-left">
+                <tr>
+                  <td> Nombre jugador local</td>
+                  <td>No.</td>
+                  <td>Nombre jugador visita</td>
+                  <td>No.</td>
+                </tr>
+            {% for item in object_list %}
+                <tr>
+                    <td>{{item.nombreJL1}}</td>
+                    <td>{{item.numeroJL1}}</td>
+                    <td>{{item.nombreJV1}}</td>
+                    <td>{{item.numeroJV1}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL2}}</td>
+                    <td>{{item.numeroJL2}}</td>
+                    <td>{{item.nombreJV2}}</td>
+                    <td>{{item.numeroJV2}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL3}}</td>
+                    <td>{{item.numeroJL3}}</td>
+                    <td>{{item.nombreJV3}}</td>
+                    <td>{{item.numeroJV3}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL4}}</td>
+                    <td>{{item.numeroJL4}}</td>
+                    <td>{{item.nombreJV4}}</td>
+                    <td>{{item.numeroJV4}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL5}}</td>
+                    <td>{{item.numeroJL5}}</td>
+                    <td>{{item.nombreJV5}}</td>
+                    <td>{{item.numeroJV5}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL6}}</td>
+                    <td>{{item.numeroJL6}}</td>
+                    <td>{{item.nombreJV6}}</td>
+                    <td>{{item.numeroJV6}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL7}}</td>
+                    <td>{{item.numeroJL7}}</td>
+                    <td>{{item.nombreJV7}}</td>
+                    <td>{{item.numeroJV7}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL8}}</td>
+                    <td>{{item.numeroJL8}}</td>
+                    <td>{{item.nombreJV8}}</td>
+                    <td>{{item.numeroJV8}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL9}}</td>
+                    <td>{{item.numeroJL9}}</td>
+                    <td>{{item.nombreJV9}}</td>
+                    <td>{{item.numeroJV9}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL10}}</td>
+                    <td>{{item.numeroJL10}}</td>
+                    <td>{{item.nombreJV10}}</td>
+                    <td>{{item.numeroJV10}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreJL11}}</td>
+                    <td>{{item.numeroJL11}}</td>
+                    <td>{{item.nombreJV11}}</td>
+                    <td>{{item.numeroJV11}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.nombreDtL}}</td>
+                    <td>{{item.numeroDtL}}</td>
+                    <td>{{item.nombreDtV}}</td>
+                    <td>{{item.numeroDtV}}</td>
+                </tr>
+
+            {% endfor%}
+            </table>
+        <a class="btn btn-primary btn-sm" href="{% url 'jornada_actual:alin_create' %}">Crear</a>
+        {% for item in object_list %}
+            <a class="btn btn-primary btn-sm" href="{% url 'jornada_actual:alin_update' item.id %}">Editar</a>
+              <a class="btn btn-primary btn-sm" href="{% url 'jornada_actual:alin_delete' item.id %}">eliminar</a>
+        {% endfor%}
+
+        </div>
+    </div>
+</div>
+
+    <div class="col-md-2">
+        <div class="panel panel-default">
+             <div class="panel-body">
+                 <a class="btn btn-primary" href="{% url 'jornada_actual:list' %}">jornada</a> </br> </br>
+                 <a class="btn btn-primary" href="http://127.0.0.1:8000/jornada_actual/directoApi/">Directo</a></br></br>
+                 <a class="btn btn-primary" href="{% url 'jornada_actual:cronica_list' %}">Cronica</a></br></br>
+                 <a class="btn btn-primary" href="{% url 'jornada_actual:result_list' %}">Resultados</a></br></br>
+             </div>
+        </div>
+    </div>
+{% endblock %}

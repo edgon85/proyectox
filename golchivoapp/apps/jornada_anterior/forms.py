@@ -1,12 +1,14 @@
 from django import forms
-from .models import Jornada, Alineacion, Directo, Cronica, Resultado
+from .models import Jornada, Directo, Cronica, Resultado
+from apps.jornada_actual.models import Alineaciones
 
 class JorndaForm(forms.ModelForm):
 	class Meta:
 		model = Jornada
 		fields = [
 			"titulo", "fecha", "horario", "estadio", 
-			"nom_local", "nom_visita","marcador","estado",
+			"nom_local","logo_local", "nom_visita",
+            "logo_visita","marcador","estado","num_tab"
 		]
 		labels = {
 			"titulo":"Titulo",
@@ -14,9 +16,12 @@ class JorndaForm(forms.ModelForm):
 			"horario":"Horario de jornada",
 			"estadio":"Estadio",
 			"nom_local":"Nombre equipo local",
+            "logo_local":"Logo Local",
 			"nom_visita":"Nombre equipo visita",
+            "logo_visita": "Logo visita",
 			"marcador":"Marcador del Juego",
 			"estado":"Estado del juego",
+            "num_tab": "Num de tab",
 		}
 		widgets = {
 			"titulo":forms.TextInput(attrs={'class':'form-control'}),
@@ -27,26 +32,188 @@ class JorndaForm(forms.ModelForm):
 			"nom_visita":forms.TextInput(attrs={'class':'form-control'}),
 			"marcador":forms.TextInput(attrs={'class':'form-control'}),
 			"estado":forms.TextInput(attrs={'class':'form-control'}),
+            "num_tab": forms.TextInput(attrs={'class': 'form-control'}),
 		}
 
 class AlineacionForm(forms.ModelForm):
 	class Meta:
-		model = Alineacion
+		model = Alineaciones
 		fields = [
-			"nombre_jugador_local","numero_jugador_local",
-			"nombre_jugador_visita","numero_jugador_visita"
+			"nombreJL1",
+			"numeroJL1",
+			"nombreJV1",
+			"numeroJV1",
+
+            "nombreJL2",
+            "numeroJL2",
+            "nombreJV2",
+            "numeroJV2",
+
+            "nombreJL3",
+            "numeroJL3",
+            "nombreJV3",
+            "numeroJV3",
+
+            "nombreJL4",
+            "numeroJL4",
+            "nombreJV4",
+            "numeroJV4",
+
+            "nombreJL5",
+            "numeroJL5",
+            "nombreJV5",
+            "numeroJV5",
+
+            "nombreJL6",
+            "numeroJL6",
+            "nombreJV6",
+            "numeroJV6",
+
+            "nombreJL7",
+            "numeroJL7",
+            "nombreJV7",
+            "numeroJV7",
+
+            "nombreJL8",
+            "numeroJL8",
+            "nombreJV8",
+            "numeroJV8",
+
+            "nombreJL9",
+            "numeroJL9",
+            "nombreJV9",
+            "numeroJV9",
+
+            "nombreJL10",
+            "numeroJL10",
+            "nombreJV10",
+            "numeroJV10",
+
+            "nombreJL11",
+            "numeroJL11",
+            "nombreJV11",
+            "numeroJV11",
+
+            "nombreDtL",
+            "nombreDtV",
 		]
 		labels = {
-			"nombre_jugador_local":"Nombre",
-			"numero_jugador_local":"No.",
-			"nombre_jugador_visita":"Nombre",
-			"numero_jugador_visita":"No.",	
+			"nombreJL1":"Nombre",
+			"numeroJL1":"No.",
+			"nombreJV1":"Nombre",
+			"numeroJV1":"No.",
+
+            "nombreJL2": "Nombre",
+            "numeroJL2": "No.",
+            "nombreJV2": "Nombre",
+            "numeroJV2": "No.",
+
+            "nombreJL3": "Nombre",
+            "numeroJL3": "No.",
+            "nombreJV3": "Nombre",
+            "numeroJV3": "No.",
+
+            "nombreJL4": "Nombre",
+            "numeroJL4": "No.",
+            "nombreJV4": "Nombre",
+            "numeroJV4": "No.",
+
+            "nombreJL5": "Nombre",
+            "numeroJL5": "No.",
+            "nombreJV5": "Nombre",
+            "numeroJV5": "No.",
+
+            "nombreJL6": "Nombre",
+            "numeroJL6": "No.",
+            "nombreJV6": "Nombre",
+            "numeroJV6": "No.",
+
+            "nombreJL7": "Nombre",
+            "numeroJL7": "No.",
+            "nombreJV7": "Nombre",
+            "numeroJV7": "No.",
+
+            "nombreJL8": "Nombre",
+            "numeroJL8": "No.",
+            "nombreJV8": "Nombre",
+            "numeroJV8": "No.",
+
+            "nombreJL9": "Nombre",
+            "numeroJL9": "No.",
+            "nombreJV9": "Nombre",
+            "numeroJV9": "No.",
+
+            "nombreJL10": "Nombre",
+            "numeroJL10": "No.",
+            "nombreJV10": "Nombre",
+            "numeroJV10": "No.",
+
+            "nombreJL11": "Nombre",
+            "numeroJL11": "No.",
+            "nombreJV11": "Nombre",
+            "numeroJV11": "No.",
+
+            "nombreDtL": "Nombre",
+            "nombreDtV": "Nombre",
 		}
 		widgets = {
-			"nombre_jugador_local":forms.TextInput(attrs={'class':'form-control'}),
-			"numero_jugador_local":forms.TextInput(attrs={'class':'form-control'}),
-			"nombre_jugador_visita":forms.TextInput(attrs={'class':'form-control'}),
-			"numero_jugador_visita":forms.TextInput(attrs={'class':'form-control'}),	
+			"nombreJL1":forms.TextInput(attrs={'class':'form-control'}),
+			"numeroJL1":forms.TextInput(attrs={'class':'form-control'}),
+			"nombreJV1":forms.TextInput(attrs={'class':'form-control'}),
+			"numeroJV1":forms.TextInput(attrs={'class':'form-control'}),
+
+            "nombreJL2": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL2": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV2": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV2": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL3": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL3": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV3": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV3": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL4": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL4": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV4": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV4": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL5": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL5": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV5": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV5": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL6": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL6": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV6": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV6": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL7": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL7": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV7": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV7": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL8": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL8": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV8": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV8": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL9": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL9": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV9": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV9": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL10": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL10": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV10": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV10": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreJL11": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJL11": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreJV11": forms.TextInput(attrs={'class': 'form-control'}),
+            "numeroJV11": forms.TextInput(attrs={'class': 'form-control'}),
+
+            "nombreDtL": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombreDtV": forms.TextInput(attrs={'class': 'form-control'}),
 		}
 
 class DirectoForm(forms.ModelForm):

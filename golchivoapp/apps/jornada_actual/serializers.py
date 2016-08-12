@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Jornada, Alineacion, Directo, Cronica, Resultado
+from .models import Jornada, Alineacion, Directo, Cronica, Resultado, Alineaciones
 
 
 class JornadaSerializer(serializers.ModelSerializer):
@@ -32,4 +32,11 @@ class ResultadoSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Resultado
+		fields = ("__all__")
+
+
+class AlineacionesSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Alineaciones
 		fields = ("__all__")

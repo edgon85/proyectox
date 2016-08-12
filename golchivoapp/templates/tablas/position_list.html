@@ -1,0 +1,40 @@
+{% include 'base/base.html' %}
+
+{% block content %}
+
+    <div class="col-md-2 ">
+    </div>
+<div class="col-md-6 ">
+<h3>{{ template_title }}</h3>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <table class="table text-left">
+                <tr>
+                    <td>Posicion</td>
+                    <td>Equipo</td>
+                    <td>Jugados</td>
+                    <td>Goles</td>
+                    <td>Dif</td>
+                    <td>Pts</td>
+                    <td>accion</td>
+                </tr>
+            {% for item in object_list %}
+                <tr>
+                    <td>{{item.posicion}}</td>
+                    <td>{{item.equipo}}</td>
+                    <td>{{item.partidos}}</td>
+                    <td>{{item.goles}}</td>
+                    <td>{{item.diferencia}}</td>
+                    <td>{{item.puntos}}</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="{% url 'tablas:pos_update' item.id %}">Editar</a>
+                    </td>
+                </tr>
+
+            {% endfor%}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

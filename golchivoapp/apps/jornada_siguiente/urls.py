@@ -1,5 +1,6 @@
 from django.conf.urls import url, include
 from . import views
+from django.contrib.auth.decorators import login_required
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -11,7 +12,8 @@ router.register(r'resultadoApi', views.ResultadoViewSet)
 
 urlpatterns = [
 	#Jornadas
-    
+    url(r'^$', login_required(views.jornada_list), name="list"),
+    url(r'^(?P<id>\d+)/edit/$',login_required(views.jornada_update), name='jornada_update'),
     #api
     url(r'^', include(router.urls)),
 
