@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'pagedown',
     'markdown_deux',
+    'corsheaders',
     # my apps
     'apps.jornada_anterior',
     'apps.jornada_actual',
@@ -63,6 +64,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'golchivoapp.urls'
@@ -155,4 +158,13 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")  #usuarios sub
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+)
+
+CORS_ORIGIN_REGEX_WHITELIST = (
+    'localhost:4200',
+)
 
